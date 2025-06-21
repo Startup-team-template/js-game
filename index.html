@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  
+  </head>
+  <body>
+    <load src="./HTML-PARTS/header.html"></load>
+
+    <main>
+      <h1>Oyunlar gelecek</h1>
+    </main>
+
+    <load src="./HTML-PARTS/footer.html"></load>
+
+    <script>
+      
+      document.querySelectorAll('load').forEach(async (element) => {
+          const src = element.getAttribute('src');
+          try {
+              const response = await fetch(src);
+              if (!response.ok) throw new Error('Dosya yüklenemedi.');
+              const content = await response.text();
+              element.outerHTML = content;
+          } catch (error) {
+              console.error('Hata:', error);
+          }
+      });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    // Mobile menu açma
+    $('.mobile-btn').click(function(e){
+      e.preventDefault();
+      $('.button-group').css({'display':'flex','position':'fixed'});
+    });
+  
+    // Mobile menu kapama
+    $('.mobile-btn-close').click(function(e){
+      e.preventDefault();
+      $('.button-group').css('display','none');
+    });
+  });
+  </script>
+  </body>
+</html>
