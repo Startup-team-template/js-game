@@ -1,0 +1,411 @@
+.dice-game {
+    box-sizing: border-box;
+    width: 100%;
+    max-height: 100%;
+    height: 100vh;
+    background-color: #ebebf0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-of-dice {
+    display: flex;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.btn-style {
+    color: #f44242;
+    background-color: #ffcaca;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 50px;
+    height: 40px;
+}
+
+#input-number {
+    border: none;
+    text-align: center;
+    width: 80px;
+}
+
+.start-game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dices {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    list-style-type: none;
+    padding-inline-start: 0;
+    padding-top: 20px;
+}
+
+
+.diceInfo {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.valList {
+    width: 100%;
+    padding-left: 20px;
+}
+
+.valList span {
+    font-weight: bold;
+}
+
+.nameInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+.diceRoll {
+    list-style-type: none;
+}
+
+.buttonsDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.btn-dice,
+.btn-reset {
+    border-radius: 5px;
+    width: 90px;
+    height: 40px;
+    border: none;
+    transition: all 0.3ms ease;
+}
+
+.btn-dice {
+    background-color: #37476b;
+    color: white;
+}
+
+.btn-reset {
+    background-color: #8f909d;
+    color: #21325b;
+}
+
+.btn-dice:hover {
+    background-color: #8f909d;
+    color: black;
+    transition: all 0.3ms ease-in-out;
+}
+
+.btn-reset:hover {
+    background-color: #37476b;
+    color: white;
+}
+
+.dice-3d-container {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    margin-top: 10px;
+    perspective: 500px;
+    position: relative;
+    text-align: center;
+}
+
+.dice-3d {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s ease-out;
+    transform: rotateX('0deg') rotateY('0deg');
+}
+
+.dice-3d .face {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background-color: #f0f0f0;
+    border: 1px solid #777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.dot {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.face.front {
+    /*Yüz 1*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+}
+
+.face.front .dot {
+    display: none;
+}
+
+.face.front .dot:nth-child(1) {
+    display: block;
+    grid-area: 2/2;
+}
+
+/*Yüz 2*/
+.face.bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+    padding: 10px;
+}
+
+.face.bottom .dot {
+    display: none;
+}
+
+.face.bottom .dot:nth-child(1) {
+    display: block;
+    grid-area: 1/1;
+}
+
+.face.bottom .dot:nth-child(2) {
+    display: block;
+    grid-area: 3/3;
+}
+
+/*Yüz 3*/
+.face.right {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+    padding: 10px;
+}
+
+.face.right .dot {
+    display: none;
+}
+
+.face.right .dot:nth-child(1) {
+    display: block;
+    grid-area: 1/1;
+}
+
+.face.right .dot:nth-child(2) {
+    display: block;
+    grid-area: 2/2;
+}
+
+.face.right .dot:nth-child(3) {
+    display: block;
+    grid-area: 3/3;
+}
+
+/*Yüz 4*/
+.face.left {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+    padding: 10px;
+}
+
+.face.left .dot {
+    display: none;
+}
+
+.face.left .dot:nth-child(1) {
+    display: block;
+    grid-area: 1/1;
+}
+
+.face.left .dot:nth-child(2) {
+    display: block;
+    grid-area: 1/3;
+}
+
+.face.left .dot:nth-child(3) {
+    display: block;
+    grid-area: 3/1;
+}
+
+.face.left .dot:nth-child(4) {
+    display: block;
+    grid-area: 3/3;
+}
+
+/*Yüz 5*/
+.face.top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+    padding: 10px;
+}
+
+.face.top .dot {
+    display: none;
+}
+
+.face.top .dot:nth-child(1) {
+    display: block;
+    grid-area: 1/1;
+}
+
+.face.top .dot:nth-child(2) {
+    display: block;
+    grid-area: 1/3;
+}
+
+.face.top .dot:nth-child(3) {
+    display: block;
+    grid-area: 2/2;
+}
+
+.face.top .dot:nth-child(4) {
+    display: block;
+    grid-area: 3/1;
+}
+
+.face.top .dot:nth-child(5) {
+    display: block;
+    grid-area: 3/3;
+}
+
+/*Yüz 6*/
+.face.back {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    place-items: center;
+    padding: 10px;
+}
+
+.face.back .dot {
+    display: none;
+}
+
+.face.back .dot:nth-child(1) {
+    display: block;
+    grid-area: 1/1;
+}
+
+.face.back .dot:nth-child(2) {
+    display: block;
+    grid-area: 1/3;
+}
+
+.face.back .dot:nth-child(3) {
+    display: block;
+    grid-area: 2/1;
+}
+
+.face.back .dot:nth-child(4) {
+    display: block;
+    grid-area: 2/3;
+}
+
+.face.back .dot:nth-child(5) {
+    display: block;
+    grid-area: 3/1;
+}
+
+.face.back .dot:nth-child(6) {
+    display: block;
+    grid-area: 3/3;
+}
+
+
+
+.dice-3d .face.front {
+    transform: rotateY(0deg) translateZ(45px);
+}
+
+.dice-3d .face.back {
+    transform: rotateY(180deg) translateZ(45px);
+}
+
+.dice-3d .face.right {
+    transform: rotateY(90deg) translateZ(45px);
+}
+
+.dice-3d .face.left {
+    transform: rotateY(-90deg) translateZ(45px);
+}
+
+.dice-3d .face.top {
+    transform: rotateX(90deg) translateZ(45px);
+}
+
+.dice-3d .face.bottom {
+    transform: rotateX(-90deg) translateZ(45px);
+}
+
+/*
+.dice-3d .face.front::before { content: "1";}
+.dice-3d .face.back::before {content: "6";} 
+.dice-3d .face.right::before {content: "3";} 
+.dice-3d .face.left::before {content: "4";} 
+.dice-3d .face.top::before {content: "5";} 
+.dice-3d .face.bottom::before {content: "2";} 
+*/
+
+.dice-3d.rolling {
+    animation: rollAnimation 1.5s ease-out forwards;
+}
+
+@keyframes rollAnimation {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    25% {
+        transform: rotateX(720deg) rotateY(1080deg) rotateZ(360deg);
+    }
+
+    50% {
+        transform: rotateX(1440deg) rotateY(1800deg) rotateZ(720deg);
+    }
+
+    75% {
+        transform: rotateX(2160deg) rotateY(2520deg) rotateZ(1080deg);
+    }
+
+    100% {
+        /* JavaScript tarafından belirlenecek son transform değeri */
+    }
+}
